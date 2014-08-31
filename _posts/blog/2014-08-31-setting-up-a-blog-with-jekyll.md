@@ -28,7 +28,7 @@ The advantages of [Jekyll](http://jekyllrb.com/) in combination with [Github Pag
   * you do not need to maintain or backup a database
   * no need to find hosting, let [Github Pages](https://pages.github.com/) do the generating and hosting for you
 
-This blog is created this blog with [Jekyll](http://jekyllrb.com/),
+This blog is created with [Jekyll](http://jekyllrb.com/),
 hosted on [Github Pages](https://pages.github.com/) and uses the
 [So Simple Theme](http://mmistakes.github.io/so-simple-theme/). There are some pretty high quality
 themes available at

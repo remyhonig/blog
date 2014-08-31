@@ -35,8 +35,9 @@ themes available at
 [Jekyll Themes](http://jekyllthemes.org/). Step-by-step instructions
 can be found here: [Build A Blog With Jekyll And GitHub Pages](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/).
 
-With this solution I use [Emacs](http://emacsformacosx.com/) with [Org mode](http://orgmode.org/) to
-write my posts. Then I push the new posts to my repository and Github
-Pages takes care of hosting and generating the site. For finding
-feature images for the posts I use
+With this solution I use [Emacs](http://emacsformacosx.com/) with
+[Org mode](http://orgmode.org/) to write my posts. Then I push the new
+posts to my repository and [Github Pages](https://pages.github.com/)
+takes care of hosting and generating the site. For finding feature
+images for the posts I use
 [CreativeCommons Search](http://search.creativecommons.org/).

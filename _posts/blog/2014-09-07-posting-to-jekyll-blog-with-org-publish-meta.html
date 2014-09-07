@@ -1,0 +1,473 @@
+---
+title: Posting to Jekyll Blog with Org-Publish-Meta
+layout: post
+author: remyhonig
+ads: false
+date: 2014-09-07 00:00:00 +0200
+comments: true
+sharing: true
+image: 
+  feature: movabletype.jpg
+---
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-1-0-1">Versions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-2">Alternatives</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-2-0-1">Org-Jekyll by Juan Reyero</a></li>
+<li><a href="#sec-2-0-2">Org-mode to GitHub Pages with Jekyll by Cute-Jumper</a></li>
+<li><a href="#sec-2-0-3">Jekyll-Org by Eggcaker</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-3">Solution</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-3-0-1">Org-Publish-Metadata by Iani</a></li>
+<li><a href="#sec-3-0-2">So Simple Theme Support</a></li>
+<li><a href="#sec-3-0-3">Bio Photo Broken</a></li>
+<li><a href="#sec-3-0-4">Grizzl autoloading</a></li>
+<li><a href="#sec-3-0-5">Dark Themed Source Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4">Workflow</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-4-0-1">Configuration</a></li>
+<li><a href="#sec-4-0-2">Posting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+If I have to keep a blog then I want it to be integrated in my trusted
+org-mode setup. That way I can write and publish my posts straight
+from the place I keep my notes and tasks which should lower the
+threshold as much as possible to actually post regularly to my new
+blog. This is how it looks:
+</p>
+
+<pre class="org-src-container">
+<span class="org-hide"><span>**</span></span><span class="org-level-2"><span>* Posting to Jekyll Blog with Org-Publish-Meta         </span></span><span class="org-level-2"><span class="org-tag"><span>:_blog_:</span></span></span><span>
+</span><span class="org-special-keyword"><span>:PROPERTIES:</span></span><span>
+<span class="org-special-keyword">:AUTHOR:</span> remyhonig
+<span class="org-special-keyword">:DATE:</span> [2014-09-07 Sun]
+<span class="org-special-keyword">:COMMENTS:</span> true
+<span class="org-special-keyword">:SHARING:</span> true
+</span><span class="org-special-keyword"><span>:LAYOUT:</span></span><span> </span><span class="org-property-value"><span>post</span></span><span>
+</span><span class="org-special-keyword"><span>:IMAGE:</span></span><span> </span><span class="org-property-value"><span>movabletype.jpg</span></span><span>
+</span><span class="org-special-keyword"><span>:ID:</span></span><span>       </span><span class="org-property-value"><span>0236FFF2-B956-4682-B99E-219ADD97B197</span></span><span>
+</span><span class="org-special-keyword"><span>:END:</span></span><span>
+
+</span><span class="org-hide"><span>****</span></span><span class="org-level-3"><span>* Introduction</span></span><span>
+If I have to keep a blog then I want it to be integrated in my trusted
+org-mode setup. That way I can write and publish my posts straight
+from the place I keep my notes and tasks which should lower the
+threshold as much as possible to actually post regularly to my new
+blog.
+
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* Versions</span></span><span>
+These are the versions of the relevant packages and software used for
+this post.
+
+</span><span class="org-table"><span>| emacs            | 24.4.50.1 |</span></span><span>
+</span><span class="org-table"><span>| org-mode         | 8.2.7c    |</span></span><span>
+</span><span class="org-table"><span>| org-publish-meta | 9aa9aa8b  |</span></span><span>
+</span></pre>
+</div>
+
+<div id="outline-container-sec-1-0-1" class="outline-4">
+<h4 id="sec-1-0-1">Versions</h4>
+<div class="outline-text-4" id="text-1-0-1">
+<p>
+These are the versions of the relevant packages and software used for
+this post.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">emacs</td>
+<td class="left">24.4.50.1</td>
+</tr>
+
+<tr>
+<td class="left">org-mode</td>
+<td class="left">8.2.7c</td>
+</tr>
+
+<tr>
+<td class="left">org-publish-meta</td>
+<td class="left">9aa9aa8b</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Alternatives</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+I already tried some approaches that I found right away by a search for
+<a href="http://www.google.com/search?q=jekyll+orgmode">"jekyll orgmode"</a>. These approaches had problems that I with my beginner
+knowledge of elisp could not solve or they did not match my requirements.
+</p>
+</div>
+
+<div id="outline-container-sec-2-0-1" class="outline-4">
+<h4 id="sec-2-0-1">Org-Jekyll by Juan Reyero</h4>
+<div class="outline-text-4" id="text-2-0-1">
+<p>
+This is his description of the <a href="http://juanreyero.com/open/org-jekyll/">Org-jekyll package</a>:
+</p>
+
+<blockquote>
+<p>
+Extracts subtrees from your org-publish project files that have
+a :blog: keyword and an :on: property with a timestamp, and exports
+them to a subdirectory _posts of your project's publishing directory
+in the year-month-day-title.html format that Jekyll
+expects. Properties are passed over as yaml front-matter in the
+exported files. The title of the entry is the title of the
+subtree.
+</p>
+</blockquote>
+
+<p>
+But he starts of by stating <i>(Please note: I am no longer using
+org-jekyll.)</i> which - I assume - also means the package is not
+maintained any longer.
+</p>
+
+<p>
+The problem I had is that while running an export using the command
+<code>org-jekyll-export-blog</code> it crashed with an error. I guess this is due
+to a newer Orgmode version I'm using.
+</p>
+
+<p>
+I liked this approach of the alternatives the best but I could not get
+it to work.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-0-2" class="outline-4">
+<h4 id="sec-2-0-2">Org-mode to GitHub Pages with Jekyll by Cute-Jumper</h4>
+<div class="outline-text-4" id="text-2-0-2">
+<p>
+<a href="http://cute-jumper.github.io/emacs/2013/10/06/orgmode-to-github-pages-with-jekyll/">Cute-Jumper's approach</a> is to have one org file per post and this is
+reason enough for me to not use it. It means I have to manage a bunch
+of files outside of my existing and regularly used org files. Also
+I'll have to export them one-by-one. That means I have to keep track
+of what post is already published and what post is not. Too much
+bookkeeping for my taste.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-0-3" class="outline-4">
+<h4 id="sec-2-0-3">Jekyll-Org by Eggcaker</h4>
+<div class="outline-text-4" id="text-2-0-3">
+<p>
+<a href="https://github.com/eggcaker/jekyll-org">Eggcakers's approach</a> is to use a Ruby gem to convert org-mode files to
+Jekyll files. This moves the responsibility of the conversion from
+org-mode out of Emacs and into Jekyll. This also uses one file per
+post and has a deal-breaking disadvantage. It can only convert the
+most common org-mode syntax. It cannot <a href="http://emacs-fu.blogspot.nl/2011/02/executable-source-code-blocks-with-org.html">evaluate source blocks</a>
+and include it into the export. Considering I'm writing a developer
+blog this will be something I want for certain posts.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Solution</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-0-1" class="outline-4">
+<h4 id="sec-3-0-1">Org-Publish-Metadata by Iani</h4>
+<div class="outline-text-4" id="text-3-0-1">
+<p>
+<a href="https://github.com/iani/org-publish-meta">Iana's approach</a> makes it possible to not only store the blog posts in
+a single org-mode file but <b>also</b> to store the <a href="http://orgmode.org/guide/Publishing.html">publish project
+configuration</a> in the same org-mode file! This approach got <i>tweeted by
+Sacha Chua</i> and that is how I found it.
+</p>
+
+<p>
+Not all was well tough. I performed some fixes for my particular setup.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-0-2" class="outline-4">
+<h4 id="sec-3-0-2">So Simple Theme Support</h4>
+<div class="outline-text-4" id="text-3-0-2">
+<p>
+I use the <a href="https://github.com/mmistakes/so-simple-theme/">So Simple theme for Jekyll</a> which has a <a href="http://jekyllrb.com/docs/frontmatter/">front matter</a> property
+named image. I edited org-pm.el to look for this org-mode property in
+addition to the standard Jekyll front matter it already supports.
+</p>
+
+<pre class="org-src-container">
+<span class="diff-context">diff -c /Users/rhonig/.autosaves/\!Users\!rhonig\!.emacs.d\!lisp\!org-publish-meta\!org-pm.el.\~1\~ /Users/rhonig/.emacs.d/lisp/org-publish-meta/org-pm.el
+</span><span class="diff-header">*** </span><span class="diff-header"><span class="diff-file-header">/Users/rhonig/.autosaves/!Users!rhonig!.emacs.d!lisp!org-publish-meta!org-pm.el.~1~</span></span><span class="diff-header"> 2014-09-06 13:41:10.000000000 +0200
+--- </span><span class="diff-header"><span class="diff-file-header">/Users/rhonig/.emacs.d/lisp/org-publish-meta/org-pm.el</span></span><span class="diff-header">      2014-09-06 21:42:33.000000000 +0200
+</span><span class="diff-hunk-header">***************</span>
+<span class="diff-hunk-header">*** 914,919 ****</span>
+<span class="diff-hunk-header">--- 914,920 ----</span>
+<span class="diff-context">               (permalink (plist-get section-plist :PERMALINK))
+               (published (plist-get section-plist :PUBLISHED))
+               (sharing (plist-get section-plist :SHARING))
+</span><span class="diff-indicator-added">+</span><span class="diff-added">              (image (plist-get section-plist :IMAGE))
+</span><span class="diff-context">               (footer (plist-get section-plist :FOOTER)))
+            (setq layout  (or layout (plist-get section-plist :LAYOUT)
+                              (if date "blog" "default")))
+</span><span class="diff-hunk-header">***************</span>
+<span class="diff-hunk-header">*** 937,942 ****</span>
+<span class="diff-hunk-header">--- 939,945 ----</span>
+<span class="diff-context">              (if comments (insert (format "comments: %s\n" comments)))
+              (if sharing (insert (format "sharing: %s\n" sharing)))
+              (if footer (insert (format "footer: %s\n" footer)))
+</span><span class="diff-indicator-added">+</span><span class="diff-added">             (if image (insert (format "image: \n  feature: %s\n" image)))
+</span><span class="diff-context">              (when categories
+                (insert "categories:\n")
+                (dolist (category (split-string categories ", "))
+
+Diff finished.  Sun Sep  7 11:19:35 2014
+</span></pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-0-3" class="outline-4">
+<h4 id="sec-3-0-3">Bio Photo Broken</h4>
+<div class="outline-text-4" id="text-3-0-3">
+<p>
+Because org-publish-metadata sets an <i>Author</i> property. The default
+site.owner is not used in the So Simple Theme which causes the bio
+photo to break.
+</p>
+
+<p>
+I fixed this by adding an author in <code>_data/authors.yml</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #73d216;"># </span><span style="color: #73d216;">Authors</span>
+<span style="color: #fcaf3e;">remyhonig</span>:
+  <span style="color: #fcaf3e;">name</span>: Remy Honig
+  <span style="color: #fcaf3e;">avatar</span>: bio-photo.jpg
+</pre>
+</div>
+
+<p>
+I refer to that author in the properties of the post.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-0-4" class="outline-4">
+<h4 id="sec-3-0-4">Grizzl autoloading</h4>
+<div class="outline-text-4" id="text-3-0-4">
+<p>
+Grizzl is a dependency of org-publish-metadata.Installing grizzle is
+as easy as running <code>M-x package-install grizzl</code> but either
+org-publish-metadata cannot autoload it properly or grizzle isn't
+setup properly for autoloading (maybe Cask causes it, I'm not sure). I
+get a <code>Required feature `grizzl-core' was not provided</code> when running
+<code>M-x org-pm-menu</code>.
+</p>
+
+<p>
+To solve this I load grizzl manually.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span>add-to-list 'load-path <span style="color: #e9b96e;">"~/.emacs.d/lisp/org-publish-meta"</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span>add-hook 'org-mode-hook
+        <span style="color: #93a8c6;">(</span><span style="color: #b4fa70;">lambda</span> <span style="color: #b0b1a3;">()</span>
+          <span style="color: #b0b1a3;">(</span>load <span style="color: #e9b96e;">"grizzl-core.el"</span><span style="color: #b0b1a3;">)</span>
+          <span style="color: #b0b1a3;">(</span>load <span style="color: #e9b96e;">"grizzl-read.el"</span><span style="color: #b0b1a3;">)</span>
+          <span style="color: #b0b1a3;">(</span><span style="color: #b4fa70;">require</span> '<span style="color: #e9b2e3;">org-pm</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-0-5" class="outline-4">
+<h4 id="sec-3-0-5">Dark Themed Source Code</h4>
+<div class="outline-text-4" id="text-3-0-5">
+<p>
+I use a dark theme in Emacs so the exported source code blocks also
+have this theme. To display them nicely I added some css to the site
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #fce94f;">.org-src-container, .example </span>{
+  <span style="color: #fcaf3e;">background-color</span>: #353535;
+  <span style="color: #fcaf3e;">color</span>: #fff;
+  <span style="color: #fcaf3e;">margin-left</span>: 5px;
+  <span style="color: #fcaf3e;">padding-left</span>: 10px;
+  <span style="color: #fcaf3e;">padding-top</span>: 2px;
+  <span style="color: #fcaf3e;">padding-bottom</span>: 2px;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Workflow</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+This is the workflow I can now use to write posts.
+</p>
+</div>
+
+<div id="outline-container-sec-4-0-1" class="outline-4">
+<h4 id="sec-4-0-1">Configuration</h4>
+<div class="outline-text-4" id="text-4-0-1">
+<p>
+This will be needed only once.
+</p>
+</div>
+
+<ul class="org-ul"><li>Open an org file that will contain the publishing configuration.<br  /><div class="outline-text-6" id="text-4-0-1-0-1">
+<p>
+This also trigger org-pm to load.
+</p>
+</div>
+</li>
+<li>Create new publishing configuration<br  /><div class="outline-text-6" id="text-4-0-1-0-2">
+<p>
+<code>M-x org-pm-insert-new-project</code>
+</p>
+
+<pre class="org-src-container">
+<span class="org-hide"><span>**</span></span><span class="org-level-2"><span>* org-publish projects                      </span></span><span class="org-level-2"><span class="org-tag"><span>:PROJECT_DEFS:</span></span></span><span>
+</span><span class="org-hide"><span>****</span></span><span class="org-level-3"><span>* blog</span></span><span>
+</span><span class="org-special-keyword"><span>:PROPERTIES:</span></span><span>
+:ID:       96AC22C1-B805-46D5-B6FC-C2B9C6C05A12
+</span><span class="org-special-keyword"><span>:END:</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* body-only t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* publish-to-jekyll t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* default-layout "page"</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* base-directory "~/blog/org-pm/"</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* base-extension "org"</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* recursive t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* publishing-directory "~/blog/_posts/blog/"</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* publishing-function 'org-html-publish-to-html</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* headline-levels 4</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* section-numbers nil</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-toc t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-author t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-creator t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-emphasize t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-sub-superscript nil</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-tables t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-tags t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-tasks t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-todo-keywords nil</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-latex t</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* with-drawers nil</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* toc-heading "Contents"</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* static-base-directory "~/blog/org-pm/images/"</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* static-publishing-directory "~/blog/images/"</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* static-base-extension "css\\|js\\|less\\|scss\\|php\\|rb\\|py\\|pdf\\|jpg\\|gif\\|png"</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* static-publishing-function 'org-publish-attachment</span></span><span>
+</span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* static-recursive t</span></span><span>...
+</span></pre>
+</div>
+</li>
+<li>Lower the level of the new heading<br  /><div class="outline-text-6" id="text-4-0-1-0-3">
+<p>
+For me the indentation of the new configuration heading was a level to
+high. Maybe this is caused by the <code>#+STARTUP: odd</code> org config, maybe
+by me. I don't really care about this as this step will only be taken
+once. Failing to do this will cause the org-publish-metada to not find
+the configuration under the right header. See the <a href="https://github.com/iani/org-publish-meta/blob/master/TUTORIAL.org">org-publish-metadata
+tutorial</a> for details about the form of the configuration.
+</p>
+</div>
+</li></ul>
+</div>
+
+<div id="outline-container-sec-4-0-2" class="outline-4">
+<h4 id="sec-4-0-2">Posting</h4>
+<div class="outline-text-4" id="text-4-0-2">
+<p>
+For creating a post.
+</p>
+</div>
+
+<ul class="org-ul"><li>Create post<br  /><div class="outline-text-6" id="text-4-0-2-0-1">
+<p>
+Creating a post by simply adding a new heading and giving it a
+tag. The should be the name of the publishing configuration heading
+and be wrapped in underscores.  When adding a date, use an inactive
+timestamp <code>[2014-01-01]</code> as an active timestamp <code>&lt;2014-01-01&gt;</code> leads to
+a double date in the exported post's
+filename. <code>2014-01-01-2014-01-01-hello.html</code> instead of
+<code>2014-01-01-hello.html</code>.
+</p>
+</div>
+</li>
+<li>Export all posts<br  /><div class="outline-text-6" id="text-4-0-2-0-2">
+<p>
+<code>M-x org-pm-export</code>
+</p>
+</div>
+</li>
+<li>Edit properties<br  /><div class="outline-text-6" id="text-4-0-2-0-3">
+<p>
+After the export I add the appropriate properties. This could be done
+even faster by using <a href="https://github.com/capitaomorte/yasnippet">yasnippet</a>.
+</p>
+</div>
+</li>
+<li>Generate and preview the Jekyll site<br  /><div class="outline-text-6" id="text-4-0-2-0-4">
+<p>
+<code>jekyll serve</code>
+</p>
+</div>
+</li></ul>
+</div>
+</div>

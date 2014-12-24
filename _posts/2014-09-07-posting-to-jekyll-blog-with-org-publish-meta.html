@@ -1,67 +1,15 @@
 ---
-title: Posting to Jekyll Blog with Org-Publish-Meta
-layout: post
 author: remyhonig
-ads: false
-date: 2014-09-07 00:00:00 +0200
+date: 2014-09-07
+layout: post
 comments: true
 sharing: true
-image: 
+image:
   feature: movabletype.jpg
 ---
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#sec-1">Introduction</a>
-<ul>
-<li>
-<ul>
-<li><a href="#sec-1-0-1">Versions</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-2">Alternatives</a>
-<ul>
-<li>
-<ul>
-<li><a href="#sec-2-0-1">Org-Jekyll by Juan Reyero</a></li>
-<li><a href="#sec-2-0-2">Org-mode to GitHub Pages with Jekyll by Cute-Jumper</a></li>
-<li><a href="#sec-2-0-3">Jekyll-Org by Eggcaker</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-3">Solution</a>
-<ul>
-<li>
-<ul>
-<li><a href="#sec-3-0-1">Org-Publish-Metadata by Iani</a></li>
-<li><a href="#sec-3-0-2">So Simple Theme Support</a></li>
-<li><a href="#sec-3-0-3">Bio Photo Broken</a></li>
-<li><a href="#sec-3-0-4">Grizzl autoloading</a></li>
-<li><a href="#sec-3-0-5">Dark Themed Source Code</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-4">Workflow</a>
-<ul>
-<li>
-<ul>
-<li><a href="#sec-4-0-1">Configuration</a></li>
-<li><a href="#sec-4-0-2">Posting</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Introduction</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 If I have to keep a blog then I want it to be integrated in my trusted
@@ -101,7 +49,7 @@ this post.
 </div>
 
 <div id="outline-container-sec-1-0-1" class="outline-4">
-<h4 id="sec-1-0-1">Versions</h4>
+<h4 id="sec-1-0-1"><span class="section-number-4">1.0.1</span> Versions</h4>
 <div class="outline-text-4" id="text-1-0-1">
 <p>
 These are the versions of the relevant packages and software used for
@@ -138,7 +86,7 @@ this post.
 </div>
 
 <div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Alternatives</h2>
+<h2 id="sec-2"><span class="section-number-2">2</span> Alternatives</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 I already tried some approaches that I found right away by a search for
@@ -148,9 +96,9 @@ requirements. I'll explain how they work and why they didn't for me.
 </p>
 </div>
 
-<div id="outline-container-sec-2-0-1" class="outline-4">
-<h4 id="sec-2-0-1">Org-Jekyll by Juan Reyero</h4>
-<div class="outline-text-4" id="text-2-0-1">
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Org-Jekyll by Juan Reyero</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
 This is his description of the <a href="http://juanreyero.com/open/org-jekyll/">Org-jekyll package</a>:
 </p>
@@ -186,9 +134,9 @@ it to work.
 </div>
 </div>
 
-<div id="outline-container-sec-2-0-2" class="outline-4">
-<h4 id="sec-2-0-2">Org-mode to GitHub Pages with Jekyll by Cute-Jumper</h4>
-<div class="outline-text-4" id="text-2-0-2">
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Org-mode to GitHub Pages with Jekyll by Cute-Jumper</h3>
+<div class="outline-text-3" id="text-2-2">
 <p>
 <a href="http://cute-jumper.github.io/emacs/2013/10/06/orgmode-to-github-pages-with-jekyll/">Cute-Jumper's approach</a> is to have one org file per post and this is
 reason enough for me to not use it. It means I have to manage a bunch
@@ -200,9 +148,9 @@ bookkeeping for my taste.
 </div>
 </div>
 
-<div id="outline-container-sec-2-0-3" class="outline-4">
-<h4 id="sec-2-0-3">Jekyll-Org by Eggcaker</h4>
-<div class="outline-text-4" id="text-2-0-3">
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Jekyll-Org by Eggcaker</h3>
+<div class="outline-text-3" id="text-2-3">
 <p>
 <a href="https://github.com/eggcaker/jekyll-org">Eggcakers's approach</a> is to use a Ruby gem to convert org-mode files to
 Jekyll files. This moves the responsibility of the conversion from
@@ -217,11 +165,11 @@ blog this will be something I want for certain posts.
 </div>
 
 <div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Solution</h2>
+<h2 id="sec-3"><span class="section-number-2">3</span> Solution</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-0-1" class="outline-4">
-<h4 id="sec-3-0-1">Org-Publish-Metadata by Iani</h4>
-<div class="outline-text-4" id="text-3-0-1">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Org-Publish-Metadata by Iani</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 <a href="https://github.com/iani/org-publish-meta">Iana's approach</a> makes it possible to not only store the blog posts in
 a single org-mode file but <b>also</b> to store the <a href="http://orgmode.org/guide/Publishing.html">publish project
@@ -241,9 +189,9 @@ Not all was well tough. I had to perform some fixes for my particular setup.
 </div>
 </div>
 
-<div id="outline-container-sec-3-0-2" class="outline-4">
-<h4 id="sec-3-0-2">So Simple Theme Support</h4>
-<div class="outline-text-4" id="text-3-0-2">
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> So Simple Theme Support</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 I use the <a href="https://github.com/mmistakes/so-simple-theme/">So Simple theme for Jekyll</a> which has a <a href="http://jekyllrb.com/docs/frontmatter/">front matter</a> property
 named image. I edited org-pm.el to look for this org-mode property in
@@ -280,9 +228,9 @@ Diff finished.  Sun Sep  7 11:19:35 2014
 </div>
 </div>
 
-<div id="outline-container-sec-3-0-3" class="outline-4">
-<h4 id="sec-3-0-3">Bio Photo Broken</h4>
-<div class="outline-text-4" id="text-3-0-3">
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Bio Photo Broken</h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 Because org-publish-metadata sets an <i>Author</i> property. The default
 site.owner is not used in the So Simple Theme which causes the bio
@@ -308,9 +256,9 @@ I refer to that author in the properties of the post.
 </div>
 </div>
 
-<div id="outline-container-sec-3-0-4" class="outline-4">
-<h4 id="sec-3-0-4">Grizzl autoloading</h4>
-<div class="outline-text-4" id="text-3-0-4">
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Grizzl autoloading</h3>
+<div class="outline-text-3" id="text-3-4">
 <p>
 Grizzl is a dependency of org-publish-metadata.Installing grizzle is
 as easy as running <code>M-x package-install grizzl</code> but either
@@ -337,9 +285,9 @@ To solve this I load grizzl manually.
 </div>
 </div>
 
-<div id="outline-container-sec-3-0-5" class="outline-4">
-<h4 id="sec-3-0-5">Dark Themed Source Code</h4>
-<div class="outline-text-4" id="text-3-0-5">
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Dark Themed Source Code</h3>
+<div class="outline-text-3" id="text-3-5">
 <p>
 I use a dark theme in Emacs so the exported source code blocks also
 have this theme. To display them nicely I added some css to the site
@@ -362,28 +310,32 @@ have this theme. To display them nicely I added some css to the site
 </div>
 
 <div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Workflow</h2>
+<h2 id="sec-4"><span class="section-number-2">4</span> Workflow</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 This is the workflow I can now use to write posts.
 </p>
 </div>
 
-<div id="outline-container-sec-4-0-1" class="outline-4">
-<h4 id="sec-4-0-1">Configuration</h4>
-<div class="outline-text-4" id="text-4-0-1">
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Configuration</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 This will be needed only once.
 </p>
 </div>
 
-<ul class="org-ul"><li><a id="sec-4-0-1-0-1" name="sec-4-0-1-0-1"></a>Open an org file that will contain the publishing configuration.<br  /><div class="outline-text-6" id="text-4-0-1-0-1">
+<div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> Open an org file that will contain the publishing configuration.</h4>
+<div class="outline-text-4" id="text-4-1-1">
 <p>
 This also triggers org-pm to load.
 </p>
 </div>
-</li>
-<li><a id="sec-4-0-1-0-2" name="sec-4-0-1-0-2"></a>Create new publishing configuration<br  /><div class="outline-text-6" id="text-4-0-1-0-2">
+</div>
+<div id="outline-container-sec-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2"><span class="section-number-4">4.1.2</span> Create new publishing configuration</h4>
+<div class="outline-text-4" id="text-4-1-2">
 <p>
 <code>M-x org-pm-insert-new-project</code>
 </p>
@@ -423,8 +375,10 @@ This also triggers org-pm to load.
 </span><span class="org-hide"><span>******</span></span><span class="org-level-4"><span>* static-recursive t</span></span><span>...
 </span></pre>
 </div>
-</li>
-<li><a id="sec-4-0-1-0-3" name="sec-4-0-1-0-3"></a>Lower the level of the new heading<br  /><div class="outline-text-6" id="text-4-0-1-0-3">
+</div>
+<div id="outline-container-sec-4-1-3" class="outline-4">
+<h4 id="sec-4-1-3"><span class="section-number-4">4.1.3</span> Lower the level of the new heading</h4>
+<div class="outline-text-4" id="text-4-1-3">
 <p>
 For me the indentation of the new configuration heading was a level to
 high. Maybe this is caused by the <code>#+STARTUP: odd</code> org config, maybe
@@ -434,26 +388,36 @@ the configuration under the right header. See the <a href="https://github.com/ia
 tutorial</a> for details about the form of the configuration.
 </p>
 </div>
-</li></ul>
+</div>
 </div>
 
-<div id="outline-container-sec-4-0-2" class="outline-4">
-<h4 id="sec-4-0-2">Posting</h4>
-<div class="outline-text-4" id="text-4-0-2">
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Posting</h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
 For creating a post.
 </p>
+
+
+<div class="figure">
+<p><img src="../images/posting_workflow.png" alt="posting_workflow.png" />
+</p>
+</div>
 </div>
 
-<ul class="org-ul"><li><a id="sec-4-0-2-0-1" name="sec-4-0-2-0-1"></a>Create post<br  /><div class="outline-text-6" id="text-4-0-2-0-1">
+<div id="outline-container-sec-4-2-1" class="outline-4">
+<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> Create post</h4>
+<div class="outline-text-4" id="text-4-2-1">
 <p>
 Creating a post by simply adding a new heading and giving it the
 <code>_blog_</code> tag in this case. The tag name depends on the name of the
 publishing configuration heading and must be wrapped in underscores.
 </p>
 </div>
-</li>
-<li><a id="sec-4-0-2-0-2" name="sec-4-0-2-0-2"></a>Add a date<br  /><div class="outline-text-6" id="text-4-0-2-0-2">
+</div>
+<div id="outline-container-sec-4-2-2" class="outline-4">
+<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> Add a date</h4>
+<div class="outline-text-4" id="text-4-2-2">
 <p>
 When adding a date, use an inactive timestamp <code>[2014-01-01]</code> as an
 active timestamp <code>&lt;2014-01-01&gt;</code> leads to a double date in the exported
@@ -461,32 +425,40 @@ post's filename. <code>2014-01-01-2014-01-01-hello.html</code> instead of
 <code>2014-01-01-hello.html</code>.
 </p>
 </div>
-</li>
-<li><a id="sec-4-0-2-0-3" name="sec-4-0-2-0-3"></a>Export all posts<br  /><div class="outline-text-6" id="text-4-0-2-0-3">
+</div>
+<div id="outline-container-sec-4-2-3" class="outline-4">
+<h4 id="sec-4-2-3"><span class="section-number-4">4.2.3</span> Export all posts</h4>
+<div class="outline-text-4" id="text-4-2-3">
 <p>
 <code>M-x org-pm-export</code>. You might need to expand all headings if you get
 an error message when executing this command with <code>S-tab S-tab S-tab</code>.
 </p>
 </div>
-</li>
-<li><a id="sec-4-0-2-0-4" name="sec-4-0-2-0-4"></a>Edit properties<br  /><div class="outline-text-6" id="text-4-0-2-0-4">
+</div>
+<div id="outline-container-sec-4-2-4" class="outline-4">
+<h4 id="sec-4-2-4"><span class="section-number-4">4.2.4</span> Edit properties</h4>
+<div class="outline-text-4" id="text-4-2-4">
 <p>
 After the export I add the appropriate properties by copying them from
 the example post at the top. This could be done even faster by using <a href="https://github.com/capitaomorte/yasnippet">yasnippet</a>.
 </p>
 </div>
-</li>
-<li><a id="sec-4-0-2-0-5" name="sec-4-0-2-0-5"></a>Generate and preview the Jekyll site<br  /><div class="outline-text-6" id="text-4-0-2-0-5">
+</div>
+<div id="outline-container-sec-4-2-5" class="outline-4">
+<h4 id="sec-4-2-5"><span class="section-number-4">4.2.5</span> Generate and preview the Jekyll site</h4>
+<div class="outline-text-4" id="text-4-2-5">
 <p>
 <code>jekyll serve</code>
 </p>
 </div>
-</li>
-<li><a id="sec-4-0-2-0-6" name="sec-4-0-2-0-6"></a>Commit and push<br  /><div class="outline-text-6" id="text-4-0-2-0-6">
+</div>
+<div id="outline-container-sec-4-2-6" class="outline-4">
+<h4 id="sec-4-2-6"><span class="section-number-4">4.2.6</span> Commit and push</h4>
+<div class="outline-text-4" id="text-4-2-6">
 <p>
 <code>cd ~/blog/_posts &amp;&amp; git add . &amp;&amp; git commit -m "New post" &amp;&amp; git push origin</code>
 </p>
 </div>
-</li></ul>
+</div>
 </div>
 </div>

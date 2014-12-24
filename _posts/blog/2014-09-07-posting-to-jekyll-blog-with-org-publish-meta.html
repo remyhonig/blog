@@ -143,7 +143,8 @@ this post.
 <p>
 I already tried some approaches that I found right away by a search for
 <a href="http://www.google.com/search?q=jekyll+orgmode">"jekyll orgmode"</a>. These approaches had problems that I with my beginner
-knowledge of elisp could not solve or they did not match my requirements.
+knowledge of elisp could not solve or they did not match my
+requirements. I'll explain how they work and why they didn't for me.
 </p>
 </div>
 
@@ -224,12 +225,18 @@ blog this will be something I want for certain posts.
 <p>
 <a href="https://github.com/iani/org-publish-meta">Iana's approach</a> makes it possible to not only store the blog posts in
 a single org-mode file but <b>also</b> to store the <a href="http://orgmode.org/guide/Publishing.html">publish project
-configuration</a> in the same org-mode file! This approach got <i>tweeted by
-Sacha Chua</i> and that is how I found it.
+configuration</a> in the same org-mode file!
 </p>
 
 <p>
-Not all was well tough. I performed some fixes for my particular setup.
+I found out about it through Sacha Chua's tweet:
+</p>
+
+<blockquote class="twitter-tweet" lang="en"><p>Do you use Org Mode with Jekyll or Octopress? <a href="https://t.co/x4RDlDi4MI">https://t.co/x4RDlDi4MI</a> might be interesting. (Haven&#39;t tried it yet, since I use Wordpress)</p>&mdash; Sacha Chua (@sachac) <a href="https://twitter.com/sachac/status/435108030003171328">February 16, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>
+Not all was well tough. I had to perform some fixes for my particular setup.
 </p>
 </div>
 </div>
@@ -370,13 +377,13 @@ This will be needed only once.
 </p>
 </div>
 
-<ul class="org-ul"><li>Open an org file that will contain the publishing configuration.<br  /><div class="outline-text-6" id="text-4-0-1-0-1">
+<ul class="org-ul"><li><a id="sec-4-0-1-0-1" name="sec-4-0-1-0-1"></a>Open an org file that will contain the publishing configuration.<br  /><div class="outline-text-6" id="text-4-0-1-0-1">
 <p>
-This also trigger org-pm to load.
+This also triggers org-pm to load.
 </p>
 </div>
 </li>
-<li>Create new publishing configuration<br  /><div class="outline-text-6" id="text-4-0-1-0-2">
+<li><a id="sec-4-0-1-0-2" name="sec-4-0-1-0-2"></a>Create new publishing configuration<br  /><div class="outline-text-6" id="text-4-0-1-0-2">
 <p>
 <code>M-x org-pm-insert-new-project</code>
 </p>
@@ -417,7 +424,7 @@ This also trigger org-pm to load.
 </span></pre>
 </div>
 </li>
-<li>Lower the level of the new heading<br  /><div class="outline-text-6" id="text-4-0-1-0-3">
+<li><a id="sec-4-0-1-0-3" name="sec-4-0-1-0-3"></a>Lower the level of the new heading<br  /><div class="outline-text-6" id="text-4-0-1-0-3">
 <p>
 For me the indentation of the new configuration heading was a level to
 high. Maybe this is caused by the <code>#+STARTUP: odd</code> org config, maybe
@@ -438,34 +445,46 @@ For creating a post.
 </p>
 </div>
 
-<ul class="org-ul"><li>Create post<br  /><div class="outline-text-6" id="text-4-0-2-0-1">
+<ul class="org-ul"><li><a id="sec-4-0-2-0-1" name="sec-4-0-2-0-1"></a>Create post<br  /><div class="outline-text-6" id="text-4-0-2-0-1">
 <p>
-Creating a post by simply adding a new heading and giving it a
-tag. The should be the name of the publishing configuration heading
-and be wrapped in underscores.  When adding a date, use an inactive
-timestamp <code>[2014-01-01]</code> as an active timestamp <code>&lt;2014-01-01&gt;</code> leads to
-a double date in the exported post's
-filename. <code>2014-01-01-2014-01-01-hello.html</code> instead of
+Creating a post by simply adding a new heading and giving it the
+<code>_blog_</code> tag in this case. The tag name depends on the name of the
+publishing configuration heading and must be wrapped in underscores.
+</p>
+</div>
+</li>
+<li><a id="sec-4-0-2-0-2" name="sec-4-0-2-0-2"></a>Add a date<br  /><div class="outline-text-6" id="text-4-0-2-0-2">
+<p>
+When adding a date, use an inactive timestamp <code>[2014-01-01]</code> as an
+active timestamp <code>&lt;2014-01-01&gt;</code> leads to a double date in the exported
+post's filename. <code>2014-01-01-2014-01-01-hello.html</code> instead of
 <code>2014-01-01-hello.html</code>.
 </p>
 </div>
 </li>
-<li>Export all posts<br  /><div class="outline-text-6" id="text-4-0-2-0-2">
+<li><a id="sec-4-0-2-0-3" name="sec-4-0-2-0-3"></a>Export all posts<br  /><div class="outline-text-6" id="text-4-0-2-0-3">
 <p>
-<code>M-x org-pm-export</code>
+<code>M-x org-pm-export</code>. You might need to expand all headings if you get
+an error message when executing this command with <code>S-tab S-tab S-tab</code>.
 </p>
 </div>
 </li>
-<li>Edit properties<br  /><div class="outline-text-6" id="text-4-0-2-0-3">
+<li><a id="sec-4-0-2-0-4" name="sec-4-0-2-0-4"></a>Edit properties<br  /><div class="outline-text-6" id="text-4-0-2-0-4">
 <p>
-After the export I add the appropriate properties. This could be done
-even faster by using <a href="https://github.com/capitaomorte/yasnippet">yasnippet</a>.
+After the export I add the appropriate properties by copying them from
+the example post at the top. This could be done even faster by using <a href="https://github.com/capitaomorte/yasnippet">yasnippet</a>.
 </p>
 </div>
 </li>
-<li>Generate and preview the Jekyll site<br  /><div class="outline-text-6" id="text-4-0-2-0-4">
+<li><a id="sec-4-0-2-0-5" name="sec-4-0-2-0-5"></a>Generate and preview the Jekyll site<br  /><div class="outline-text-6" id="text-4-0-2-0-5">
 <p>
 <code>jekyll serve</code>
+</p>
+</div>
+</li>
+<li><a id="sec-4-0-2-0-6" name="sec-4-0-2-0-6"></a>Commit and push<br  /><div class="outline-text-6" id="text-4-0-2-0-6">
+<p>
+<code>cd ~/blog/_posts &amp;&amp; git add . &amp;&amp; git commit -m "New post" &amp;&amp; git push origin</code>
 </p>
 </div>
 </li></ul>

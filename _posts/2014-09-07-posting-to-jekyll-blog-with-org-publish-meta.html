@@ -4,8 +4,6 @@ date: 2014-09-07
 layout: post
 comments: true
 sharing: true
-image:
-  feature: movabletype.jpg
 ---
 
 <div id="outline-container-sec-1" class="outline-2">
@@ -243,10 +241,10 @@ I fixed this by adding an author in <code>_data/authors.yml</code>.
 
 <div class="org-src-container">
 
-<pre class="src src-yaml"><span style="color: #73d216;"># </span><span style="color: #73d216;">Authors</span>
-<span style="color: #fcaf3e;">remyhonig</span>:
-  <span style="color: #fcaf3e;">name</span>: Remy Honig
-  <span style="color: #fcaf3e;">avatar</span>: bio-photo.jpg
+<pre class="src src-yaml"><span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Authors</span>
+<span style="color: #ff8700;">remyhonig</span>:
+  <span style="color: #ff8700;">name</span>: Remy Honig
+  <span style="color: #ff8700;">avatar</span>: bio-photo.jpg
 </pre>
 </div>
 
@@ -274,12 +272,12 @@ To solve this I load grizzl manually.
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span>add-to-list 'load-path <span style="color: #e9b96e;">"~/.emacs.d/lisp/org-publish-meta"</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span>add-hook 'org-mode-hook
-        <span style="color: #93a8c6;">(</span><span style="color: #b4fa70;">lambda</span> <span style="color: #b0b1a3;">()</span>
-          <span style="color: #b0b1a3;">(</span>load <span style="color: #e9b96e;">"grizzl-core.el"</span><span style="color: #b0b1a3;">)</span>
-          <span style="color: #b0b1a3;">(</span>load <span style="color: #e9b96e;">"grizzl-read.el"</span><span style="color: #b0b1a3;">)</span>
-          <span style="color: #b0b1a3;">(</span><span style="color: #b4fa70;">require</span> '<span style="color: #e9b2e3;">org-pm</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<pre class="src src-elisp"><span style="color: #dd0000; font-weight: bold;">(</span>add-to-list 'load-path <span style="color: #ff4ea3;">"~/.emacs.d/lisp/org-publish-meta"</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #dd0000; font-weight: bold;">(</span>add-hook 'org-mode-hook
+        <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a1db00;">lambda</span> <span style="color: #a1db00; font-weight: bold;">()</span>
+          <span style="color: #a1db00; font-weight: bold;">(</span>load <span style="color: #ff4ea3;">"grizzl-core.el"</span><span style="color: #a1db00; font-weight: bold;">)</span>
+          <span style="color: #a1db00; font-weight: bold;">(</span>load <span style="color: #ff4ea3;">"grizzl-read.el"</span><span style="color: #a1db00; font-weight: bold;">)</span>
+          <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #a1db00;">require</span> '<span style="color: #5fafd7;">org-pm</span><span style="color: #a1db00; font-weight: bold;">)</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
 </pre>
 </div>
 </div>
@@ -295,13 +293,13 @@ have this theme. To display them nicely I added some css to the site
 
 <div class="org-src-container">
 
-<pre class="src src-css"><span style="color: #fce94f;">.org-src-container, .example </span>{
-  <span style="color: #fcaf3e;">background-color</span>: #353535;
-  <span style="color: #fcaf3e;">color</span>: #fff;
-  <span style="color: #fcaf3e;">margin-left</span>: 5px;
-  <span style="color: #fcaf3e;">padding-left</span>: 10px;
-  <span style="color: #fcaf3e;">padding-top</span>: 2px;
-  <span style="color: #fcaf3e;">padding-bottom</span>: 2px;
+<pre class="src src-css"><span style="color: #ffd700;">.org-src-container, .example </span>{
+  <span style="color: #ff8700;">background-color</span>: #353535;
+  <span style="color: #ff8700;">color</span>: #fff;
+  <span style="color: #ff8700;">margin-left</span>: 5px;
+  <span style="color: #ff8700;">padding-left</span>: 10px;
+  <span style="color: #ff8700;">padding-top</span>: 2px;
+  <span style="color: #ff8700;">padding-bottom</span>: 2px;
 }
 </pre>
 </div>

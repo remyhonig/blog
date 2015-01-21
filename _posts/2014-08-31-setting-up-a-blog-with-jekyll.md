@@ -7,8 +7,6 @@ excerpt:
 tags: []
 comments: true
 ads: false
-image:
-  feature: caxton.jpg
 date: 2014-08-30T21:39:55-04:00
 ---
 

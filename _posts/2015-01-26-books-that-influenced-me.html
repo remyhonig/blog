@@ -1,0 +1,19 @@
+---
+layout: post
+title: Books That Influenced Me
+date: 2015-01-26
+categories: 
+-
+author: remyhonig
+excerpt: Books I've read and have influenced me
+---
+{% for book in site.data.books limit:10 %}
+<li style="list-style-type:none;">
+  <h2 style="padding-bottom:0px;">{{ book.title }}</h2> 
+  <img src="{{ book.thumbnail }}" width="150px" alt="{{ book.title }}"/>
+  <br /><br />
+  by {{ book.author }}
+  <br /><br />
+  <blockquote><p>{{ book.description }}</p></blockquote>
+</li>
+{% endfor %}

@@ -1,0 +1,94 @@
+- title: Code Complete
+  author: Steve McConnell
+  thumbnail: http://ecx.images-amazon.com/images/I/51FUYfErOXL._AA160_.jpg
+  description: >-
+    Widely considered one of the best practical guides to programming,
+    Steve McConnell’s original CODE COMPLETE has been helping
+    developers write better software for more than a decade. Now this
+    classic book has been fully updated and revised with leading-edge
+    practices—and hundreds of new code samples—illustrating the art
+    and science of software construction. Capturing the body of
+    knowledge available from research, academia, and everyday
+    commercial practice, McConnell synthesizes the most effective
+    techniques and must-know principles into clear, pragmatic
+    guidance. No matter what your experience level, development
+    environment, or project size, this book will inform and stimulate
+    your thinking — and help you build the highest quality code.
+
+
+- title: The Pragmatic Programmer
+  author: Andrew Hunt & David Thomas
+  thumbnail: http://ecx.images-amazon.com/images/I/41BKx1AxQWL._AA160_.jpg
+  description: >-
+    Programmers are craftspeople trained to use a certain set of tools
+    (editors, object managers, version trackers) to generate a certain
+    kind of product (programs) that will operate in some environment
+    (operating systems on hardware assemblies). Like any other craft,
+    computer programming has spawned a body of wisdom, most of which
+    isn't taught at universities or in certification classes. Most
+    programmers arrive at the so-called tricks of the trade over time,
+    through independent experimentation. In The Pragmatic Programmer,
+    Andrew Hunt and David Thomas codify many of the truths they've
+    discovered during their respective careers as designers of
+    software and writers of code.
+
+- title: Interface Oriented Design
+  author: Ken Pugh
+  thumbnail: http://ecx.images-amazon.com/images/I/51Mx8451yHL._AA160_.jpg
+  description: >-
+    Interface Oriented Design focuses on an important, but often
+    neglected, aspect of object-oriented design. You'll learn by
+    pragmatic example how to create effective designs composed of
+    interfaces to objects, components and services. You'll see
+    techniques for breaking down solutions into interfaces and then
+    determining appropriate implementation of those interfaces to
+    create a well structured, robust, working program.
+
+- title: Head First Design Patterns
+  author: Eric Freeman & Elisabeth Robson
+  thumbnail: http://ecx.images-amazon.com/images/I/51u3S8BHSpL._AA160_.jpg
+  description: >-
+    At any given moment, someone struggles with the same software
+    design problems you have. And, chances are, someone else has
+    already solved your problem. This edition of Head First Design
+    Patterns shows you the tried-and-true, road-tested patterns used
+    by developers to create functional, elegant, reusable, and
+    flexible software. By the time you finish this book, you’ll be
+    able to take advantage of the best design practices and
+    experiences of those who have fought the beast of software design
+    and triumphed. We think your time is too valuable to spend
+    struggling with new concepts. Using the latest research in
+    cognitive science and learning theory to craft a multi-sensory
+    learning experience, Head First Design Patterns uses a visually
+    rich format designed for the way your brain works, not a
+    text-heavy approach that puts you to sleep.
+
+- title: Practices of an Agile Developer
+  author: Venkat Subramaniam & Andy Hunt
+  thumbnail: http://ecx.images-amazon.com/images/I/516JgnUK9yL._AA160_.jpg
+  description: >-
+    Want to be a better developer? This books collects the personal
+    habits, ideas, and approaches of successful agile software
+    developers and presents them in a series of short, easy-to-digest
+    tips. This isn't academic fluff; follow these ideas and you'll
+    show yourself, your teammates, and your managers real
+    results. These are the proven and effective agile practices that
+    will make you a better developer.
+
+- title: Communicating Design
+  author: Dan M. Brown
+  thumbnail: http://ecx.images-amazon.com/images/I/51jOLIZJfqL._AA160_.jpg
+  description: >-
+    Successful web design teams depend on clear communication between
+    developers and their clients—and among members of the development
+    team. Wireframes, site maps, flow charts, and other design
+    diagrams establish a common language so designers and project
+    teams can capture ideas, track progress, and keep their
+    stakeholders informed.  In this all new edition of Communicating
+    Design, author and information architect Dan Brown defines and
+    describes each deliverable, then offers practical advice for
+    creating the documents and using them in the context of teamwork
+    and presentations, independent of methodology. Whatever processes,
+    tools, or approaches you use, this book will help you improve the
+    creation and presentation of your wireframes, site maps, flow
+    charts, and other deliverables.

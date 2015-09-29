@@ -1,0 +1,199 @@
+---
+layout: post
+title: Generator vs array_map
+date: 2015-09-29
+categories: blog
+tags: php
+author: remyhonig
+excerpt: Generators can be used to write more readable array_map's
+---
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Introduction</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+I never liked the <i>syntax</i> of <code>array_map</code> but <a href="http://php.net/manual/en/language.generators.overview.php">generator</a> support in
+<code>php 5.5</code> makes mapping a little bit more readable and much more
+memory-efficient.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">With array map</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<div class="org-src-container">
+
+<pre class="src src-php"><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span> = <span style="color: #dd0000; font-weight: bold;">[</span>1, 2, 3<span style="color: #dd0000; font-weight: bold;">]</span>;
+
+<span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">result</span> = array_map<span style="color: #dd0000; font-weight: bold;">(</span>
+    <span style="color: #a1db00;">function</span><span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">i</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">{</span>
+        <span style="color: #a1db00;">return</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">i</span> = <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">i</span> + 1;
+    <span style="color: #5fafd7; font-weight: bold;">}</span>,
+    <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span>
+<span style="color: #dd0000; font-weight: bold;">)</span>;
+
+print_r<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">result</span><span style="color: #dd0000; font-weight: bold;">)</span>;
+</pre>
+</div>
+
+<pre class="example">
+Array
+(
+    [0] =&gt; 2
+    [1] =&gt; 3
+    [2] =&gt; 4
+)
+</pre>
+
+<p>
+Note that the $result array contains the entire mapped result. This is
+different with generators as you will see in the next block.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">With generator</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<div class="org-src-container">
+
+<pre class="src src-php"><span style="color: #a1db00;">function</span> <span style="color: #ffd700;">increaseByOne</span><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span><span style="color: #dd0000; font-weight: bold;">)</span> <span style="color: #dd0000; font-weight: bold;">{</span>
+    <span style="color: #a1db00;">foreach</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span> <span style="color: #a1db00;">as</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">number</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">{</span>
+        <span style="color: #a1db00;">yield</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">number</span> + 1;
+    <span style="color: #5fafd7; font-weight: bold;">}</span>
+<span style="color: #dd0000; font-weight: bold;">}</span>
+
+print_r<span style="color: #dd0000; font-weight: bold;">(</span>iterator_to_array<span style="color: #5fafd7; font-weight: bold;">(</span>
+    increaseByOne<span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #ff4ea3; font-weight: bold;">[</span>1, 2, 3<span style="color: #ff4ea3; font-weight: bold;">]</span><span style="color: #a1db00; font-weight: bold;">)</span>
+<span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>;
+</pre>
+</div>
+
+<pre class="example">
+Array
+(
+    [0] =&gt; 2
+    [1] =&gt; 3
+    [2] =&gt; 4
+)
+</pre>
+
+<p>
+The generator function <code>increaseByOne</code> has to be looped to get <i>any</i>
+results as it is processes the input array one element at a time. The
+<code>array_map</code> function will return the whole mapped array.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">With nested array maps</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+</div><div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">Option 1</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-php"><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span> = <span style="color: #dd0000; font-weight: bold;">[</span>1, 2, 3<span style="color: #dd0000; font-weight: bold;">]</span>;
+
+<span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">result</span> = array_map<span style="color: #dd0000; font-weight: bold;">(</span>
+    <span style="color: #a1db00;">function</span><span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">j</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">{</span>
+        <span style="color: #a1db00;">return</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">j</span> * 2;
+    <span style="color: #5fafd7; font-weight: bold;">}</span>,
+    array_map<span style="color: #5fafd7; font-weight: bold;">(</span>
+        <span style="color: #a1db00;">function</span><span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">i</span><span style="color: #a1db00; font-weight: bold;">)</span> <span style="color: #a1db00; font-weight: bold;">{</span>
+            <span style="color: #a1db00;">return</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">i</span> = <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">i</span> + 1;
+        <span style="color: #a1db00; font-weight: bold;">}</span>,
+        <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span>
+    <span style="color: #5fafd7; font-weight: bold;">)</span>
+<span style="color: #dd0000; font-weight: bold;">)</span>;
+
+print_r<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">result</span><span style="color: #dd0000; font-weight: bold;">)</span>;
+</pre>
+</div>
+
+<pre class="example">
+Array
+(
+    [0] =&gt; 4
+    [1] =&gt; 6
+    [2] =&gt; 8
+)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">Option 2</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<div class="org-src-container">
+
+<pre class="src src-php"><span style="color: #a1db00;">function</span> <span style="color: #ffd700;">increaseByOne</span><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span><span style="color: #dd0000; font-weight: bold;">)</span> <span style="color: #dd0000; font-weight: bold;">{</span>
+    <span style="color: #a1db00;">return</span> array_map<span style="color: #5fafd7; font-weight: bold;">(</span>
+        <span style="color: #a1db00;">function</span><span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">i</span><span style="color: #a1db00; font-weight: bold;">)</span> <span style="color: #a1db00; font-weight: bold;">{</span>
+            <span style="color: #a1db00;">return</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">i</span> = <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">i</span> + 1;
+        <span style="color: #a1db00; font-weight: bold;">}</span>,
+        <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span>
+    <span style="color: #5fafd7; font-weight: bold;">)</span>;
+<span style="color: #dd0000; font-weight: bold;">}</span>
+
+<span style="color: #a1db00;">function</span> <span style="color: #ffd700;">multiplyByTwo</span><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span><span style="color: #dd0000; font-weight: bold;">)</span> <span style="color: #dd0000; font-weight: bold;">{</span>
+    <span style="color: #a1db00;">return</span> array_map<span style="color: #5fafd7; font-weight: bold;">(</span>
+        <span style="color: #a1db00;">function</span><span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">j</span><span style="color: #a1db00; font-weight: bold;">)</span> <span style="color: #a1db00; font-weight: bold;">{</span>
+            <span style="color: #a1db00;">return</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">j</span> * 2;
+        <span style="color: #a1db00; font-weight: bold;">}</span>,
+        <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span>
+    <span style="color: #5fafd7; font-weight: bold;">)</span>;
+<span style="color: #dd0000; font-weight: bold;">}</span>
+
+print_r<span style="color: #dd0000; font-weight: bold;">(</span>multiplyByTwo<span style="color: #5fafd7; font-weight: bold;">(</span>increaseByOne<span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #ff4ea3; font-weight: bold;">[</span>1, 2, 3<span style="color: #ff4ea3; font-weight: bold;">]</span><span style="color: #a1db00; font-weight: bold;">)</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>;
+</pre>
+</div>
+
+<pre class="example">
+Array
+(
+    [0] =&gt; 4
+    [1] =&gt; 6
+    [2] =&gt; 8
+)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">With nested generators</h2>
+<div class="outline-text-2" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-php"><span style="color: #a1db00;">function</span> <span style="color: #ffd700;">increaseByOne</span><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span><span style="color: #dd0000; font-weight: bold;">)</span> <span style="color: #dd0000; font-weight: bold;">{</span>
+    <span style="color: #a1db00;">foreach</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span> <span style="color: #a1db00;">as</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">number</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">{</span>
+        <span style="color: #a1db00;">yield</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">number</span> + 1;
+    <span style="color: #5fafd7; font-weight: bold;">}</span>
+<span style="color: #dd0000; font-weight: bold;">}</span>
+
+<span style="color: #a1db00;">function</span> <span style="color: #ffd700;">multiplyByTwo</span><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span><span style="color: #dd0000; font-weight: bold;">)</span> <span style="color: #dd0000; font-weight: bold;">{</span>
+    <span style="color: #a1db00;">foreach</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">numbers</span> <span style="color: #a1db00;">as</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">number</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">{</span>
+        <span style="color: #a1db00;">yield</span> <span style="color: #c6c6c6; background-color: #303030;">$</span><span style="color: #ff8700;">number</span> * 2;
+    <span style="color: #5fafd7; font-weight: bold;">}</span>
+<span style="color: #dd0000; font-weight: bold;">}</span>
+
+print_r<span style="color: #dd0000; font-weight: bold;">(</span>iterator_to_array<span style="color: #5fafd7; font-weight: bold;">(</span>
+    multiplyByTwo<span style="color: #a1db00; font-weight: bold;">(</span>increaseByOne<span style="color: #ff4ea3; font-weight: bold;">(</span><span style="color: #00d7af; font-weight: bold;">[</span>1, 2, 3<span style="color: #00d7af; font-weight: bold;">]</span><span style="color: #ff4ea3; font-weight: bold;">)</span><span style="color: #a1db00; font-weight: bold;">)</span>
+<span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>;
+</pre>
+</div>
+
+<pre class="example">
+Array
+(
+    [0] =&gt; 4
+    [1] =&gt; 6
+    [2] =&gt; 8
+)
+</pre>
+</div>
+</div>

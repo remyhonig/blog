@@ -4,7 +4,7 @@ title: "Setting up a blog with Jekyll"
 modified:
 categories: blog
 excerpt:
-tags: []
+tags: apps
 comments: true
 ads: false
 date: 2014-08-30T21:39:55-04:00

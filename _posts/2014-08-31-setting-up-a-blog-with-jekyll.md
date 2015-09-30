@@ -2,7 +2,7 @@
 layout: post
 title: "Setting up a blog with Jekyll"
 modified:
-categories: blog
+categories:
 excerpt:
 tags: apps
 comments: true
